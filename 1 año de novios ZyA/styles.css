@@ -1,0 +1,268 @@
+/* styles.css */
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff5f5; /* Color de fondo suave, rosa claro */
+    color: #333; /* Color de texto oscuro */
+    overflow-x: hidden; /* Evita scroll horizontal causado por los corazones */
+    transition: background-color 1s ease; /* Transición suave para el color de fondo al abrir */
+}
+
+/* Contenedor de los corazones */
+#corazones-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Permite hacer clic a través de los corazones */
+    z-index: 9999;
+}
+
+/* Estilo individual de cada corazoncito */
+.corazon {
+    position: absolute;
+    color: #e91e63; /* Color rosa intenso */
+    font-size: 1.5em;
+    user-select: none;
+    animation: flotar 8s linear infinite;
+    opacity: 0.8;
+}
+
+/* Definición de la animación de flotación */
+@keyframes flotar {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0.8;
+    }
+    10% {
+        opacity: 0.9;
+    }
+    90% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Estilo para la carta cerrada */
+.carta {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 400px;
+    background: linear-gradient(135deg, #f8bbd0, #f48fb1); /* Degradado rosa */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    z-index: 10000;
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Transición suave al abrir */
+    overflow: hidden;
+}
+
+.carta:hover {
+    transform: translate(-50%, -50%) scale(1.02); /* Pequeño efecto hover */
+}
+
+.contenido-carta h2 {
+    color: #d81b60;
+    font-size: 1.8em;
+    margin-bottom: 1em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.contenido-carta p {
+    color: #880e4f;
+    font-size: 1.2em;
+    margin: 0.5em 0;
+}
+
+/* Clase para ocultar el contenido principal */
+.contenido-oculto {
+    display: none;
+}
+
+/* Estilos para la sección de contador */
+.contador {
+    text-align: center;
+    padding: 2em 1em;
+    background-color: #ffffff;
+    border-bottom: 2px solid #ffcdd2;
+    z-index: 10;
+}
+
+.contador h2 {
+    display: inline;
+    margin: 0 0.5em;
+    font-size: 1.8em;
+    color: #e91e63;
+}
+
+.numero {
+    display: inline-block;
+    font-size: 4em;
+    font-weight: bold;
+    color: #c2185b;
+    background-color: #fce4ec;
+    padding: 0.2em 0.4em;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Estilos para la sección de mensaje */
+.mensaje {
+    padding: 2em 1em;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #fff;
+    z-index: 10;
+}
+
+.mensaje h2 {
+    color: #e91e63;
+    font-size: 2em;
+}
+
+.mensaje p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 1em;
+}
+
+/* Nuevos estilos para la sección de canción */
+.cancion {
+    padding: 2em 1em;
+    text-align: center;
+    background-color: #fff9f9; /* Fondo ligeramente diferente */
+    border-top: 2px solid #ffcdd2; /* Línea decorativa */
+    border-bottom: 2px solid #ffcdd2;
+    z-index: 10;
+}
+
+.cancion h2 {
+    color: #e91e63;
+    margin-bottom: 1.5em;
+    font-size: 1.8em;
+}
+
+/* Estilo para el subtítulo de otras canciones */
+.cancion h3 {
+    color: #e91e63;
+    margin-top: 2em; /* Espacio desde el reproductor principal */
+    margin-bottom: 1em;
+    font-size: 1.5em;
+}
+
+/* Contenedor para organizar los reproductores de canciones */
+.canciones-contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Cuadrícula flexible, mínimo 300px por columna */
+    gap: 1.5em; /* Espacio entre reproductores */
+    max-width: 1200px; /* Ancho máximo */
+    margin: 0 auto; /* Centrado */
+    padding: 0 1em; /* Espacio lateral */
+    justify-items: center; /* Centra los elementos hijos (los iframes) dentro de su celda */
+}
+
+/* Estilos para el iframe de Spotify principal */
+.cancion iframe[src*="spotify.com"] {
+    max-width: 560px; /* Ancho máximo para el principal */
+    width: 100%; /* Ancho adaptable al contenedor */
+    height: 352px; /* Altura estándar del reproductor grande */
+    border-radius: 12px; /* Bordes redondeados del reproductor */
+    /* No es necesario box-shadow aquí, ya que el reproductor de Spotify lo incluye */
+}
+
+/* Nuevos estilos para la galería */
+.galeria {
+    padding: 2em 1em;
+    text-align: center;
+    background-color: #fff;
+    z-index: 10;
+}
+
+.galeria h2 {
+    color: #e91e63;
+    margin-bottom: 1em;
+}
+
+/* Contenedor para organizar las imágenes */
+.imagenes-contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Cuadrícula flexible */
+    gap: 1em; /* Espacio entre imágenes */
+    max-width: 1200px; /* Ancho máximo */
+    margin: 0 auto; /* Centrado */
+}
+
+/* Estilos para cada imagen */
+.galeria img {
+    width: 100%; /* Ancho adaptable al contenedor de la cuadrícula */
+    height: auto; /* Altura proporcional */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra */
+    transition: transform 0.3s ease; /* Transición suave para el hover */
+}
+
+/* Efecto hover para las imágenes */
+.galeria img:hover {
+    transform: scale(1.05); /* Pequeño aumento al pasar el mouse */
+}
+
+#nombre-novia {
+    font-weight: bold;
+    color: #d81b60;
+    font-style: italic;
+}
+
+/* Añadir estilos para las imágenes de la galería si decides usarlas */
+/*
+.galeria img {
+    max-width: 100%;
+    height: auto;
+    margin: 1em;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+*/
+
+/* Estilos responsivos básicos */
+@media (max-width: 768px) {
+    .carta {
+        width: 250px;
+        height: 350px;
+    }
+    .contador h2 {
+        font-size: 1.5em;
+    }
+    .numero {
+        font-size: 3em;
+    }
+    .mensaje p,
+    .cancion p {
+        font-size: 1em;
+    }
+    .cancion iframe[src*="spotify.com"] {
+        width: 90%; /* Ajusta el ancho del reproductor */
+        height: 352px; /* Mantiene la proporción */
+    }
+    /* Ajuste para la cuadrícula de canciones en móviles */
+    .canciones-contenedor {
+        grid-template-columns: 1fr; /* Una columna en móviles */
+    }
+    /* Ajuste para la galería en móviles */
+    .imagenes-contenedor {
+        grid-template-columns: 1fr; /* Una columna en móviles */
+    }
+}
